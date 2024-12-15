@@ -217,6 +217,37 @@ Symbols representing numerical characters.
        - `kabo` (name of a place) → ꯀꯕꯣ
        - `ka-bo-kang` (water hyacinth) → ꯀꯕꯣꯀꯪ
 
+---
+
+### Vowel Rules
+
+1. **Initial Position**:
+   - `aa` -> ꯑꯥ
+   - `a` -> ꯑ
+   - `u` -> ꯎ
+   - `e` -> ꯏ
+   - `ee` -> ꯏ
+   - `i` -> ꯏ
+   - `o` -> ꯑꯣ
+
+2. **Middle and Final Positions**:
+   - `aa` -> ꯥ
+   - `a` -> null
+   - `u` -> ꯨ
+   - `e` -> ꯦ
+   - `ee` -> ꯤ
+   - `i` -> ꯤ
+   - `o` -> ꯣ
+
+### Diphthong Rules
+
+- `ui` (initial): `u` -> ꯎ, `i` -> ꯏ
+- `ao` (initial): `a` -> ꯑ, `o` -> ꯑꯪ
+- `ai` (initial): `a` -> ꯑ, `i` -> ꯏ
+- `ei` (initial): `ei` -> ꯑꯩ
+- `oi` (initial): `o` -> ꯑꯪ, `i` -> ꯏ
+- `ou` (any position): `ou` -> ꯑꯧ
+
 
 ---
 
