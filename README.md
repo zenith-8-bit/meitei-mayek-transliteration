@@ -154,36 +154,69 @@ Symbols representing numerical characters.
 
 ## Mapping Rules for Transliteration
 
-### Vowel Rules
+### Vowel Mapping Rules (with examples)
 
-1. **Initial Position**:
+1. **Vowel 'aa' Mapping**
+   - **Initial Position**: If "aa" appears at the beginning of a word, it is mapped to ꯑꯥ.
+     - Example: `aanok` (speck) → ꯑꯥꯅꯣꯛ
+   - **Middle & Final Position**: If "aa" appears in the middle or at the end of a word, it is mapped to ꯥ.
+     - Examples: 
+       - `angaang` (child) → ꯑꯉꯥꯡ
+       - `yaa` (teeth) → ꯌꯥ
 
-   - `aa` -> ꯑꯥ
-   - `a` -> ꯑ
-   - `u` -> ꯎ
-   - `e` -> ꯏ
-   - `ee` -> ꯏ
-   - `i` -> ꯏ
-   - `o` -> ꯑꯣ
+2. **Vowel 'a' Mapping**
+   - **Initial Position**: If "a" appears at the beginning of a word, it is mapped to ꯑ.
+     - Example: `atiyaa` (sky) → ꯑꯇꯤꯌꯥ
+   - **Middle & Final Position**: If "a" appears in the middle or at the end, it is mapped to null (it is omitted).
+     - Examples:
+       - `maku` (owl) → ꯃꯀꯨ
+       - `aroiba` (end) → ꯑꯔꯣꯏꯕ
 
-2. **Middle and Final Positions**:
+3. **Vowel 'u' Mapping**
+   - **Initial Position**: If "u" appears at the beginning, it is mapped to ꯎ.
+     - Example: `upaal` (tree) → ꯎꯄꯥꯜ
+   - **Middle & Final Position**: If "u" appears in the middle or at the end, it is mapped to ꯨ.
+     - Examples:
+       - `achumba` (right) → ꯑꯆꯨꯝꯕ
+       - `machu` (colour) → ꯃꯆꯨ
 
-   - `aa` -> ꯥ
-   - `a` -> null
-   - `u` -> ꯨ
-   - `e` -> ꯦ
-   - `ee` -> ꯤ
-   - `i` -> ꯤ
-   - `o` -> ꯣ
+4. **Vowel 'e' Mapping**
+   - **Initial Position**: If "e" appears at the beginning, it is mapped to ꯏ.
+     - Example: `eche` (sister) → ꯏꯆꯦ
+   - **Middle & Final Position**: If "e" appears in the middle or at the end, it is mapped to ꯦ.
+     - Examples:
+       - `chetpa` (tide) → ꯆꯦꯠꯄ
+       - `ene` (aunty) → ꯏꯅꯦ
 
-### Diphthong Rules
+5. **Vowel 'ee' Mapping**
+   - **Initial Position**: If "ee" appears at the beginning of a word, it is mapped to ꯏ.
+     - Example: `ee` (blood) → ꯏ
+   - **Middle & Final Position**: If "ee" appears in the middle or at the end, it is mapped to ꯤ.
+     - Examples:
+       - `Geeta` (person name) → ꯒꯤꯇ
+       - `eikhoigee` (ours') → ꯑꯈꯣꯏꯒꯤ
 
-- `ui` (initial): `u` -> ꯎ, `i` -> ꯏ
-- `ao` (initial): `a` -> ꯑ, `o` -> ꯑꯪ
-- `ai` (initial): `a` -> ꯑ, `i` -> ꯏ
-- `ei` (initial): `ei` -> ꯑꯩ
-- `oi` (initial): `o` -> ꯑꯪ, `i` -> ꯏ
-- `ou` (any position): `ou` -> ꯑꯧ
+6. **Vowel 'i' Mapping**
+   - **Initial Position**: If "i" appears at the beginning, it is mapped to ꯏ.
+     - Example: `ima` (mother) → ꯏꯃ
+   - **Middle & Final Position**: If "i" appears in the middle or at the end, it is mapped to ꯤ.
+     - Examples:
+       - `ishing` (water) → ꯏꯁꯤꯡ
+       - `ishingchaibi` (waterfall) → ꯏꯁꯤꯡꯆꯥꯏꯕꯤ
+
+7. **Vowel 'o' Mapping**
+   - **Initial Position**: If "o" appears at the beginning of a word, it is mapped to ꯑꯣ.
+     - Example: `oja` (teacher) → ꯑꯣꯓ
+   - **Middle Position**:
+     - If "o" is the first sound in a syllable, it is mapped to ꯑꯣ.
+       - Example: `a-on-ba` (change) → ꯑꯑꯣꯟꯕ
+     - If "o" is not the first sound in a syllable, it is mapped to ꯣ.
+       - Example: `ki-hom` (pineapple) → ꯀꯤꯍꯣꯝ
+   - **Final Position**: If "o" appears at the end of a word or syllable, it is mapped to ꯣ.
+     - Examples:
+       - `kabo` (name of a place) → ꯀꯕꯣ
+       - `ka-bo-kang` (water hyacinth) → ꯀꯕꯣꯀꯪ
+
 
 ---
 
