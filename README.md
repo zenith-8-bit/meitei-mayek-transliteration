@@ -25,15 +25,15 @@ Characters that have independent sounds and can stand alone without assistance f
 
 - Total Characters: **27**
 - **Table I: Mapum Mayek Characters**
-  ```
-  ꯀ (Kok)   ꯁ (Sam)   ꯂ (Laai)   ꯃ (Mit)
-  ꯄ (Paa)   ꯅ (Naa)   ꯆ (Chil)   ꯇ (Til)
-  ꯈ (Khou)  ꯉ (Ngou)  ꯊ (Thou)  ꯋ (Waai)
-  ꯌ (Yaang) ꯍ (Hook)  ꯎ (Un)    ꯏ (Ee)
-  ꯐ (Pham)  ꯑ (Atiyaa) ꯒ (Gok)  ꯓ (Jham)
-  ꯔ (Raai)  ꯕ (Baa)   ꯖ (Jil)   ꯗ (Dil)
-  ꯘ (Ghou)  ꯙ (Dhou)  ꯚ (Bham)
-  ```
+
+| ꯀ (Kok) | ꯁ (Sam) | ꯂ (Laai) | ꯃ (Mit) |
+|---------|---------|----------|---------|
+| ꯄ (Paa) | ꯅ (Naa) | ꯆ (Chil) | ꯇ (Til) |
+| ꯈ (Khou) | ꯉ (Ngou) | ꯊ (Thou) | ꯋ (Waai) |
+| ꯌ (Yaang) | ꯍ (Hook) | ꯎ (Un) | ꯏ (Ee) |
+| ꯐ (Pham) | ꯑ (Atiyaa) | ꯒ (Gok) | ꯓ (Jham) |
+| ꯔ (Raai) | ꯕ (Baa) | ꯖ (Jil) | ꯗ (Dil) |
+| ꯘ (Ghou) | ꯙ (Dhou) | ꯚ (Bham) | |
 
 ### 2. **Lonsum Mayek**
 
@@ -41,11 +41,11 @@ Characters that cannot appear as the first character of a syllable.
 
 - Total Characters: **8**
 - **Table II: Lonsum Mayek Characters**
-  ```
-  ꯛ (Kok Lonsum)   ꯜ (Laai Lonsum)   ꯝ (Mit Lonsum)
-  ꯞ (Paa Lonsum)   ꯟ (Naa Lonsum)    ꯠ (Til Lonsum)
-  ꯡ (Ngou Lonsum)  ꯏ (Ee Lonsum)
-  ```
+
+| ꯛ (Kok Lonsum) | ꯜ (Laai Lonsum) | ꯝ (Mit Lonsum) |
+|----------------|-----------------|----------------|
+| ꯞ (Paa Lonsum) | ꯟ (Naa Lonsum) | ꯠ (Til Lonsum) |
+| ꯡ (Ngou Lonsum) | ꯏ (Ee Lonsum) | |
 
 ### 3. **Cheitap Mayek**
 
@@ -53,20 +53,29 @@ Characters that cannot stand alone and are used after Mapum Mayek to produce ext
 
 - Total Characters: **8**
 - **Table III: Cheitap Mayek Characters**
-  ```
-  ꯥ (aa)   ꯦ (e/ae)   ꯣ (o)   ꯧ (ou)
-  ꯨ (u/oo) ꯩ (ei)    ꯤ (I/ee) ꯪ (ng)
-  ```
+
+| ꯥ (aa) | ꯦ (e/ae) | ꯣ (o) | ꯧ (ou) |
+|--------|----------|-------|--------|
+| ꯨ (u/oo) | ꯩ (ei) | ꯤ (I/ee) | ꯪ (ng) |
 
 ### 4. **Cheising Mayek**
 
 Symbols representing numerical characters.
 
 - **Table IV: Cheising Mayek Characters**
-  ```
-  1 = ꯱   2 = ꯲   3 = ꯳   4 = ꯴   5 = ꯵
-  6 = ꯶   7 = ꯷   8 = ꯸   9 = ꯹   0 = ꯰
-  ```
+
+| Number | Character |
+|--------|-----------|
+| 1      | ꯱         |
+| 2      | ꯲         |
+| 3      | ꯳         |
+| 4      | ꯴         |
+| 5      | ꯵         |
+| 6      | ꯶         |
+| 7      | ꯷         |
+| 8      | ꯸         |
+| 9      | ꯹         |
+| 0      | ꯰         |
 
 ---
 
@@ -213,5 +222,4 @@ Symbols representing numerical characters.
 ## Conclusion
 
 Meitei Mayek is a rich and unique script that beautifully represents the Manipuri language. By understanding the character classifications, transliteration rules, and cultural nuances, users can effectively read, write, and translate text between English and Manipuri. This document serves as a comprehensive guide to learning and using Meitei Mayek.
-
 
