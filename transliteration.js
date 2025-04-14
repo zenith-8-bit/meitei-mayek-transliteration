@@ -1,320 +1,427 @@
-(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([[517], {
-    694: (e, l, s) => {
-        Promise.resolve().then(s.t.bind(s, 4015, 23)),
-        Promise.resolve().then(s.bind(s, 6671)),
-        Promise.resolve().then(s.bind(s, 911))
-    }
-    ,
-    6671: (e, l, s) => {
-        "use strict";
-        s.d(l, {
-            Transliterate: () => f
-        });
-        var t = s(705)
-          , a = s(4821)
-          , n = s(6001)
-          , i = s(8288)
-          , r = s(409)
-          , d = s(657)
-          , c = s(333)
-          , o = s(8698)
-          , x = s(8383)
-          , h = s(9779);
-        let p = (0,
-        n.default)( () => s.e(883).then(s.bind(s, 8883)).then(e => e.TransInfer), {
-            loadableGenerated: {
-                webpack: () => [8883]
-            },
-            ssr: !1
-        })
-          , u = (0,
-        h.y$)({
-            context: {
-                status: "loading",
-                input: {
-                    lang: "",
-                    text: ""
-                },
-                result: {
-                    status: "loading",
-                    text: null,
-                    completed: !0
-                }
-            },
-            on: {
-                status: (e, l) => ({
-                    status: l.status
-                }),
-                infer: (e, l) => ({
-                    input: {
-                        lang: l.inp.lang,
-                        text: l.inp.text
-                    }
-                }),
-                onInfer: (e, l) => ({
-                    result: l.result
-                })
+/**
+ * Copyright: All rights reserved by Abhi Sanoujam.
+ * 
+ * A simple rule based transliterator for Manipuri language (aka Meiteilon, Meiteilol, Meiteiron, Meiteirol) to convert manipuri
+ * written in english letters to unicode Meitei Mayek.
+ */
+
+const MEITEI_MAYEK_PHONEMES = [
+    { "phoneme": "a", "isVowel": true, "asVowel": "\uABE5", "asConsonant": "ꯑ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "aa", "isVowel": true, "asVowel": "\uABE5", "asConsonant": "ꯑ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "b", "isVowel": false, "asVowel": "", "asConsonant": "ꯕ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "bh", "isVowel": false, "asVowel": "", "asConsonant": "ꯚ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "c", "isVowel": false, "asVowel": "", "asConsonant": "ꯆ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "ch", "isVowel": false, "asVowel": "", "asConsonant": "ꯆ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "d", "isVowel": false, "asVowel": "", "asConsonant": "ꯗ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "dh", "isVowel": false, "asVowel": "", "asConsonant": "ꯙ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "e", "isVowel": true, "asVowel": "\uABE6", "asConsonant": "ꯑ\uABE6", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "ee", "isVowel": true, "asVowel": "\uABE4", "asConsonant": "ꯏ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "ei", "isVowel": true, "asVowel": "\uABE9", "asConsonant": "ꯑ\uABE9", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "f", "isVowel": false, "asVowel": "", "asConsonant": "ꯐ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "g", "isVowel": false, "asVowel": "", "asConsonant": "ꯒ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "gh", "isVowel": false, "asVowel": "", "asConsonant": "ꯘ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "h", "isVowel": false, "asVowel": "", "asConsonant": "ꯍ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "i", "isVowel": true, "asVowel": "\uABE4", "asConsonant": "ꯏ", "canBeLonsum": true, "asLonsum": "ꯢ" },
+    { "phoneme": "j", "isVowel": false, "asVowel": "", "asConsonant": "ꯖ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "jh", "isVowel": false, "asVowel": "", "asConsonant": "ꯓ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "k", "isVowel": false, "asVowel": "", "asConsonant": "ꯀ", "canBeLonsum": true, "asLonsum": "ꯛ" },
+    { "phoneme": "kh", "isVowel": false, "asVowel": "", "asConsonant": "ꯈ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "l", "isVowel": false, "asVowel": "", "asConsonant": "ꯂ", "canBeLonsum": true, "asLonsum": "ꯜ" },
+    { "phoneme": "m", "isVowel": false, "asVowel": "", "asConsonant": "ꯃ", "canBeLonsum": true, "asLonsum": "ꯝ" },
+    { "phoneme": "n", "isVowel": false, "asVowel": "", "asConsonant": "ꯅ", "canBeLonsum": true, "asLonsum": "ꯟ" },
+    { "phoneme": "ng", "isVowel": false, "asVowel": "\uABEA", "asConsonant": "ꯉ", "canBeLonsum": true, "asLonsum": "ꯡ" },
+    { "phoneme": "o", "isVowel": true, "asVowel": "\uABE3", "asConsonant": "ꯑ\uABE3", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "oo", "isVowel": true, "asVowel": "\uABE8", "asConsonant": "ꯎ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "ou", "isVowel": true, "asVowel": "\uABE7", "asConsonant": "ꯑ\uABE7", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "p", "isVowel": false, "asVowel": "", "asConsonant": "ꯄ", "canBeLonsum": true, "asLonsum": "ꯞ" },
+    { "phoneme": "ph", "isVowel": false, "asVowel": "", "asConsonant": "ꯐ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "r", "isVowel": false, "asVowel": "", "asConsonant": "ꯔ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "s", "isVowel": false, "asVowel": "", "asConsonant": "ꯁ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "t", "isVowel": false, "asVowel": "", "asConsonant": "ꯇ", "canBeLonsum": true, "asLonsum": "ꯠ" },
+    { "phoneme": "th", "isVowel": false, "asVowel": "", "asConsonant": "ꯊ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "u", "isVowel": true, "asVowel": "\uABE8", "asConsonant": "ꯎ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "v", "isVowel": false, "asVowel": "", "asConsonant": "ꯚ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "w", "isVowel": false, "asVowel": "", "asConsonant": "ꯋ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "y", "isVowel": false, "asVowel": "", "asConsonant": "ꯌ", "canBeLonsum": false, "asLonsum": "" },
+    { "phoneme": "z", "isVowel": false, "asVowel": "", "asConsonant": "ꯖ", "canBeLonsum": false, "asLonsum": "" },
+    // add phoneme for 'cheikhei'/full-stop
+    { "phoneme": ".", "isVowel": false, "asVowel": "", "asConsonant": "\uABEB", "canBeLonsum": false, "asLonsum": "" },
+    // add phonemes for missing english letters Q and X
+    // Q = kok + apun_mayek + wai (kw sound)
+    { "phoneme": "q", "isVowel": false, "asVowel": "", "asConsonant": "ꯀ\uABEDꯋ", "canBeLonsum": false, "asLonsum": "" },
+    // X = kok + apun_mayek + sam (ks sound)
+    { "phoneme": "x", "isVowel": false, "asVowel": "", "asConsonant": "ꯀ\uABEDꯁ", "canBeLonsum": false, "asLonsum": "" },
+];
+
+const MEITEI_MAYEK_NUMBERS = {
+    '꯰': '0',
+    '꯱': '1',
+    '꯲': '2',
+    '꯳': '3',
+    '꯴': '4',
+    '꯵': '5',
+    '꯶': '6',
+    '꯷': '7',
+    '꯸': '8',
+    '꯹': '9'
+};
+
+const MEITEI_MAYEK_APUN_MAYEK_RULES = [
+    // the following combinations of phonemes are combined with an APUN MAYEK
+    ["b", "r"],
+    // ["ch", "r"], can't think of example
+    ["dh", "r"],
+    ["dh", "y"],
+    ["f", "r"],
+    ["g", "r"],
+    ["g", "y"],
+    ["j", "r"],
+    ["j", "y"],
+    // ["k", "r"], violated in "kari" (what)
+    ["k", "w"],
+    ["k", "y"],
+    ["kh", "r"],
+    ["kh", "w"],
+    ["n", "y"],
+    // ["ng", "r"], can't think of example
+    ["p", "r"],
+    ["p", "y"],
+    ["ph", "r"],
+    ["s", "w"],
+    ["s", "y"],
+    ["sh", "w"],
+    ["sh", "y"],
+    ["t", "r"],
+    ["th", "r"],
+    // ["th", "w"], violated in "thwai"
+    ["v", "y"],
+];
+
+/**
+ * In linguistics, a phoneme is the smallest unit of sound in a language that can distinguish one word from another.
+ * A grapheme is the smallest functional unit of a writing system. It's a written symbol or a group of symbols that represents 
+ * a sound in a language.
+ * 
+ * The class below actually represents a Grapheme, but I like Phoneme more :)
+ */
+class Phoneme {
+
+    constructor(phoneme, isVowel = false, asVowel = '', asConsonant = '', canBeLonsum = false, asLonsum = '', isNumeric = false) {
+        this.phoneme = phoneme;
+        this.isVowel = isVowel;
+        this.asVowel = asVowel;
+        this.asConsonant = asConsonant;
+        this.canBeLonsum = canBeLonsum;
+        this.asLonsum = asLonsum;
+        this.isNumeric = isNumeric;
+
+        this.isUnknown = false;
+        if (phoneme.length <= 0) {
+            this.isUnknown = true;
+        } else {
+            const next = phoneme[0];
+            if (!((next >= 'a' && next <= 'z') || (next >= '0' && next <= '9'))) {
+                // any non alpha-numeric phoneme is unknown to us.
+                this.isUnknown = true;
             }
-        });
-        function f() {
-            var e, l, s;
-            let n = (0,
-            i.useSearchParams)()
-              , h = null !== (l = n.get("lang")) && void 0 !== l ? l : g[0].key
-              , [f,w] = (0,
-            a.useState)("")
-              , j = (0,
-            o.d)(f, 250)
-              , b = (0,
-            r.d)(u, e => e.context.status)
-              , y = (0,
-            r.d)(u, e => e.context.result)
-              , [N,k] = (0,
-            a.useState)(null);
-            return (0,
-            a.useEffect)( () => {
-                n.get("lang") || v(h)
-            }
-            , [n, h]),
-            (0,
-            a.useEffect)( () => {
-                u.send({
-                    type: "infer",
-                    inp: {
-                        lang: h,
-                        text: j
-                    }
-                })
-            }
-            , [h, j, b]),
-            (0,
-            a.useEffect)( () => {
-                "loading" !== y.status && k(y.text)
-            }
-            , [y]),
-            (0,
-            t.jsxs)(t.Fragment, {
-                children: [(0,
-                t.jsx)(p, {
-                    store: u
-                }), (0,
-                t.jsxs)("div", {
-                    className: "mx-auto flex w-[95%] flex-1 flex-col gap-5 py-4 md:w-[85%] xl:w-[950px]",
-                    children: [(0,
-                    t.jsx)("div", {
-                        className: "flex gap-2",
-                        children: (0,
-                        t.jsxs)("div", {
-                            className: "flex cursor-pointer items-center gap-1 rounded-xl border bg-gray-800 px-4 py-2",
-                            children: [(0,
-                            t.jsxs)("svg", {
-                                className: "fill-white",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                height: "24px",
-                                viewBox: "0 0 24 24",
-                                width: "24px",
-                                children: [(0,
-                                t.jsx)("path", {
-                                    d: "M0 0h24v24H0z",
-                                    fill: "none"
-                                }), (0,
-                                t.jsx)("path", {
-                                    d: "M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"
-                                })]
-                            }), (0,
-                            t.jsx)("span", {
-                                className: "text-xl",
-                                children: "Text"
-                            })]
-                        })
-                    }), (0,
-                    t.jsxs)("div", {
-                        className: "flex flex-col overflow-hidden rounded-lg bg-gray-800",
-                        children: [(0,
-                        t.jsxs)("div", {
-                            className: "relative flex select-none border-b border-black",
-                            children: [(0,
-                            t.jsxs)("div", {
-                                className: "flex flex-1 items-center justify-center",
-                                children: [(0,
-                                t.jsx)("div", {
-                                    className: "flex gap-2 p-4 text-center focus:outline-0"
-                                }), (0,
-                                t.jsx)("p", {
-                                    children: "Source"
-                                })]
-                            }), (0,
-                            t.jsx)("div", {
-                                className: "flex flex-1 items-center justify-center",
-                                children: (0,
-                                t.jsxs)(c.rI, {
-                                    children: [(0,
-                                    t.jsxs)(c.ty, {
-                                        className: "flex gap-2 p-4 text-center focus:outline-0",
-                                        children: [(0,
-                                        t.jsx)("p", {
-                                            children: null !== (s = null === (e = g.find(e => e.key === h)) || void 0 === e ? void 0 : e.label) && void 0 !== s ? s : "N/A"
-                                        }), (0,
-                                        t.jsxs)("svg", {
-                                            className: "fill-white",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            height: "24px",
-                                            viewBox: "0 0 24 24",
-                                            width: "24px",
-                                            children: [(0,
-                                            t.jsx)("path", {
-                                                d: "M0 0h24v24H0V0z",
-                                                fill: "none"
-                                            }), (0,
-                                            t.jsx)("path", {
-                                                d: "M7 10l5 5 5-5H7z"
-                                            })]
-                                        })]
-                                    }), (0,
-                                    t.jsx)(c.SQ, {
-                                        children: (0,
-                                        t.jsx)(c.Hr, {
-                                            value: h,
-                                            onValueChange: e => {
-                                                v(e)
-                                            }
-                                            ,
-                                            children: g.map(e => (0,
-                                            t.jsx)(c.Ht, {
-                                                value: e.key,
-                                                children: e.label
-                                            }, e.key))
-                                        })
-                                    })]
-                                })
-                            })]
-                        }), (0,
-                        t.jsxs)("div", {
-                            className: "relative flex flex-1 flex-col md:flex-row",
-                            children: [(0,
-                            t.jsxs)("div", {
-                                className: "flex flex-1 flex-col border-b border-black px-6 py-8 pb-4 md:border-b-0 md:border-r",
-                                children: [(0,
-                                t.jsx)(d.A, {
-                                    className: "resize-none break-words bg-transparent focus:outline-0",
-                                    placeholder: "Type Here...",
-                                    minRows: 4,
-                                    value: f,
-                                    autoFocus: !0,
-                                    onChange: e => {
-                                        w(e.target.value.substring(0, m))
-                                    }
-                                }), (0,
-                                t.jsxs)("div", {
-                                    className: "mt-2 flex items-center justify-between gap-2",
-                                    children: [(0,
-                                    t.jsxs)("p", {
-                                        className: "text-sm text-gray-300",
-                                        children: [f.length, " / ", m]
-                                    }), (0,
-                                    t.jsx)("button", {
-                                        className: (0,
-                                        x.cn)("rounded-full p-1.5 transition-opacity duration-75 hover:bg-gray-600", {
-                                            "opacity-0": 0 === f.length
-                                        }),
-                                        disabled: 0 === f.length,
-                                        onClick: () => {
-                                            w("")
-                                        }
-                                        ,
-                                        children: (0,
-                                        t.jsxs)("svg", {
-                                            className: "fill-white",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            height: "24px",
-                                            viewBox: "0 0 24 24",
-                                            width: "24px",
-                                            children: [(0,
-                                            t.jsx)("path", {
-                                                d: "M0 0h24v24H0V0z",
-                                                fill: "none"
-                                            }), (0,
-                                            t.jsx)("path", {
-                                                d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                                            })]
-                                        })
-                                    })]
-                                })]
-                            }), (0,
-                            t.jsxs)("div", {
-                                className: "flex flex-1 flex-col px-6 py-8 pb-4",
-                                children: [(0,
-                                t.jsx)("p", {
-                                    className: (0,
-                                    x.cn)("flex-1", {
-                                        "text-gray-400": !y
-                                    }),
-                                    children: "loading" === b ? "Loading Model..." : "error" === b ? "Could not initialize model!" : N || "Transliterate..."
-                                }), (0,
-                                t.jsx)("div", {
-                                    className: "mt-2 flex items-center justify-between gap-2",
-                                    children: (0,
-                                    t.jsx)("button", {
-                                        className: (0,
-                                        x.cn)("rounded-full p-1.5 transition-opacity duration-75 hover:bg-gray-600", {
-                                            "opacity-0": !y
-                                        }),
-                                        disabled: !y,
-                                        onClick: () => {
-                                            navigator.clipboard.writeText(y.text || "")
-                                        }
-                                        ,
-                                        children: (0,
-                                        t.jsxs)("svg", {
-                                            className: "fill-white",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            height: "24px",
-                                            viewBox: "0 0 24 24",
-                                            width: "24px",
-                                            children: [(0,
-                                            t.jsx)("path", {
-                                                d: "M0 0h24v24H0V0z",
-                                                fill: "none"
-                                            }), (0,
-                                            t.jsx)("path", {
-                                                d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-                                            })]
-                                        })
-                                    })
-                                })]
-                            }), ("loading" === y.status || !y.completed) && (0,
-                            t.jsx)("div", {
-                                className: "absolute top-0 h-1 w-full overflow-hidden bg-slate-500",
-                                children: (0,
-                                t.jsx)("div", {
-                                    className: "h-full w-full origin-left-right animate-progress bg-slate-400"
-                                })
-                            })]
-                        })]
-                    })]
-                })]
-            })
-        }
-        let g = [{
-            label: "Meitei Mayek",
-            key: "mm"
-        }, {
-            label: "English",
-            key: "en"
-        }, {
-            label: "Bengali",
-            key: "bn"
-        }]
-          , m = 450;
-        function v(e) {
-            let l = new URLSearchParams(window.location.search);
-            l.set("lang", e),
-            window.history.replaceState(null, "", "?".concat(l.toString()))
         }
     }
-}, e => {
-    var l = l => e(e.s = l);
-    e.O(0, [688, 990, 110, 29, 437, 358], () => l(694)),
-    _N_E = e.O()
+
 }
-]);
+
+/**
+ * Utility for greedily mapping english letters to meitei mayek phonemes and numbers.
+ */
+class Mapper {
+
+    constructor() {
+        this.phonemes = new Map();
+        for (let i = 0; i < MEITEI_MAYEK_PHONEMES.length; i++) {
+            // initialize all known phonemes
+            const phoneme = MEITEI_MAYEK_PHONEMES[i];
+            this.phonemes.set(phoneme.phoneme, new Phoneme(
+                phoneme.phoneme,
+                phoneme.isVowel,
+                phoneme.asVowel,
+                phoneme.asConsonant,
+                phoneme.canBeLonsum,
+                phoneme.asLonsum
+            ));
+        }
+        for (const [key, value] of Object.entries(MEITEI_MAYEK_NUMBERS)) {
+            // initialize numbers as phonemes
+            this.phonemes.set(value, new Phoneme(value, false, '', key, false, '', true));
+        }
+        this.apunMayekPhonemes = new Set();
+        for (let i = 0; i < MEITEI_MAYEK_APUN_MAYEK_RULES. length; i++) {
+            const tuple = MEITEI_MAYEK_APUN_MAYEK_RULES[i];
+            this.apunMayekPhonemes.add(tuple[0] + '-' + tuple[1]);
+        }
+    }
+
+    mapToPhonemeOrNull(curr, next = '') {
+        if (this.phonemes.has(curr + next)) {
+            return this.phonemes.get(curr + next);
+        }
+        return null;
+    }
+
+    isApunMayekPhonemesCombo(one, two) {
+        const key = one.phoneme + '-' + two.phoneme;
+        return this.apunMayekPhonemes.has(key);
+    }
+}
+
+
+
+
+const MAPPER = new Mapper();
+const PHI = new Phoneme('');
+const APUN_MAYEK_AS_PHONEME = new Phoneme('\uABED', false, "", '\uABED');
+
+/**
+ * Represents consonant-vowel-consonant state of the word.
+ */
+const CVCState = {
+    NONE: 0,
+    CONSONANT: 1,
+    VOWEL: 2,
+};
+
+/**
+ * Output mode of the phoneme.
+ */
+const OutputMode = {
+    VOWEL: 0,
+    CONSONANT: 1,
+    LONSUM: 2,
+};
+
+/**
+ * Stores the phoneme and the output mode to use for it.
+ */
+class PhonemeOutput {
+    constructor(phoneme, outputMode) {
+        this.phoneme = phoneme;
+        this.outputMode = outputMode;
+    }
+
+    getOutput() {
+        switch (this.outputMode) {
+            case OutputMode.VOWEL: return this.phoneme.asVowel;
+            case OutputMode.CONSONANT: return this.phoneme.asConsonant;
+            case OutputMode.LONSUM: return this.phoneme.asLonsum;
+        }
+        // default to use as consonant. Should never reach here.
+        return phoneme.asConsonant;
+    }
+}
+
+/**
+ * Transliterator for Meitei Mayek.
+ */
+class MeiteiMayekTransliterator {
+
+    /**
+     * 
+     * @param text The input text using english/latin letters (most likely written in manipuri).
+     * @returns Transliterated text in unicode Meitei Mayek according to the pronunciation of the word based on rules for Manipuri language.
+     */
+    transliterate(text) {
+        let prev = PHI;
+        let phonemes = [];
+        text = text || '';
+        // case is ignored in meitei mayek
+        text = text.toLowerCase();
+        // first get all phonemes from the input text
+        for (let i = 0; i < text.length; i++) {
+            const next = text[i];
+            if (!((next >= 'a' && next <= 'z') || (next >= '0' && next <= '9') || next == '.')) {
+                const nextPhoneme = new Phoneme(next, false, '', next);
+                // pass through all non-alpha-numeric as-is
+                phonemes.push(nextPhoneme);
+                prev = nextPhoneme;
+                continue;
+            }
+            // try to match greedily digraph phonemes (two letters)
+            const digraphPhoneme = MAPPER.mapToPhonemeOrNull(prev.phoneme, next);
+            if (digraphPhoneme === null) {
+                // no match, use phoneme for current letter
+                let nextPhoneme = MAPPER.mapToPhonemeOrNull(next);
+                if (nextPhoneme === null) {
+                    // this should not happen, but just in case pass-through as-is instead of failing
+                    nextPhoneme = new Phoneme(next, false, '', next);
+                }
+                phonemes.push(nextPhoneme);
+                prev = nextPhoneme;
+            } else {
+                // use the greedily matched digraph instead of single letter phoneme from previous
+                phonemes.pop();
+                phonemes.push(digraphPhoneme);
+                prev = digraphPhoneme;
+            }
+        }
+        // then convert the phonemes to meitei mayek based on CVC rules for Manipuri language.
+        return this._convertToMMCVC(phonemes);
+    }
+
+    _convertToMMCVC(phonemes) {
+        const output = [];
+
+        // start from blank
+        let state = CVCState.NONE;
+        let prev = new PhonemeOutput(PHI, OutputMode.CONSONANT);
+        for (let i = 0; i < phonemes.length; i++) {
+            const curr = phonemes[i];
+            if (curr.isUnknown) {
+                // for unknown phonemes, output as-is and continue. Reset state to NONE
+                output.push(new PhonemeOutput(curr, OutputMode.CONSONANT));
+                state = CVCState.NONE;
+                continue;
+            }
+            if (state === CVCState.NONE) {
+                // always start syllable as a consonant
+                const nextOutput = new PhonemeOutput(curr, OutputMode.CONSONANT);
+                output.push(nextOutput);
+
+                // if current phoneme is numeric, keep state as NONE. Change state to vowel if starts with vowel (so that next letter can be C)
+                state = curr.isNumeric ? CVCState.NONE : curr.isVowel ? CVCState.VOWEL : CVCState.CONSONANT;
+                prev = nextOutput;
+            } else if (state === CVCState.CONSONANT) {
+                // previous was a consonant
+                if (curr.isVowel) {
+                    // CV...
+                    const next = new PhonemeOutput(curr, OutputMode.VOWEL);
+                    output.push(next);
+
+                    state = CVCState.VOWEL;
+                    // if previous was used as lonsum, start a new syllable by flipping previous consonant as current is vowel
+                    if (prev.outputMode == OutputMode.LONSUM) {
+                        prev.outputMode = OutputMode.CONSONANT;
+                    }
+                    prev = next;
+                } else {
+                    // CC...
+                    // special handling for 'nung' consonant that can be used as vowel
+                    if (curr.phoneme === 'ng') {
+                        // is this the correct usage? To always prefer 'nung' instead of 'ngou lonsum' (if not preceded by another vowel).
+                        const next = new PhonemeOutput(curr, OutputMode.VOWEL);
+                        output.push(next);
+
+                        state = CVCState.VOWEL;
+                        prev = next;
+                    } else {
+
+                        // check for apun mayek phonemes, and add if apun mayek necessary
+                        if (MAPPER.isApunMayekPhonemesCombo(prev.phoneme, curr)) {
+                            output.push(new PhonemeOutput(APUN_MAYEK_AS_PHONEME, OutputMode.CONSONANT));
+                        }
+
+                        // use as lonsum greedily if possible. But no consecutive lonsums
+                        const next = new PhonemeOutput(curr,
+                            curr.canBeLonsum ?
+                                prev.outputMode != OutputMode.LONSUM ? OutputMode.LONSUM : OutputMode.CONSONANT
+                                : OutputMode.CONSONANT
+                        );
+                        output.push(next);
+
+                        state = CVCState.CONSONANT;
+                        prev = next;
+                    }
+                }
+            } else {
+                // previous was a VOWEL
+                // VV... or VC...
+                if (curr.isVowel) {
+                    // VV...
+                    // flip current vowel to use as a consonant as it's preceeded by a vowel (VV), e.g ai, ou, au etc
+                    const next = new PhonemeOutput(curr, OutputMode.CONSONANT);
+                    output.push(next);
+                    state = CVCState.CONSONANT;
+                    prev = next;
+                } else {
+                    // VC...
+                    // use as lonsum greedily if possible
+                    const next = new PhonemeOutput(curr, curr.canBeLonsum ? OutputMode.LONSUM : OutputMode.CONSONANT);
+                    output.push(next);
+                    state = CVCState.CONSONANT;
+                    prev = next;
+                }
+            }
+        }
+        const text = [];
+        output.forEach((next) => {
+            text.push(next.getOutput());
+        });
+        return text.join('');
+    };
+};
+
+
+
+//// TEST CODE
+
+function test() {
+    const engine = new MeiteiMayekTransliterator();
+    const tests = {
+        'angangba machuse 1adum phjei': 'ꯑꯉꯥꯡꯕꯥ ꯃꯥꯆꯨꯁꯦ ꯱ꯑꯗꯨꯝ ꯐꯖꯩ',
+        'aingbi': 'ꯑꯏꯪꯕꯤ',
+        'eikhoigi': 'ꯑꯩꯈꯣꯏꯒꯤ',
+        'khwaidagi': 'ꯈ꯭ꯋꯥꯏꯗꯥꯒꯤ',
+        'adubu': 'ꯑꯗꯨꯕꯨ',
+        'akhangba': 'ꯑꯈꯥꯡꯕꯥ',
+        'chao': 'ꯆꯥꯑꯣ',
+        'chaoo': 'ꯆꯥꯎ',
+        'chau': 'ꯆꯥꯎ',
+        'chou': 'ꯆꯧ',
+        'jou': 'ꯖꯧ',
+        'jao': 'ꯖꯥꯑꯣ',
+        'npsnb': 'ꯅꯞꯁꯟꯕ',
+        'npira': 'ꯅꯄꯤꯔꯥ',
+        'queen': 'ꯀ꯭ꯋꯨꯏꯟ',
+        'xmas tree': 'ꯀ꯭ꯁꯃꯥꯁ ꯇ꯭ꯔꯤ',
+        'apex': 'ꯑꯄꯦꯀ꯭ꯁ',
+        'kung': 'ꯀꯨꯡ',
+        'kangi': 'ꯀꯥꯉꯤ',
+        'kanggi': 'ꯀꯥꯡꯒꯤ',
+        'kang gi': 'ꯀꯥꯡ ꯒꯤ',
+        'kang': 'ꯀꯥꯡ',
+        'nng': 'ꯅꯪ',
+        'kng': 'ꯀꯪ',
+        'kng gi': 'ꯀꯪ ꯒꯤ',
+        '3218765425975': '꯳꯲꯱꯸꯷꯶꯵꯴꯲꯵꯹꯷꯵',
+        'se ei': 'ꯁꯦ ꯑꯩ', // test of end in vowel and start next with vowel
+        'chatlge .': 'ꯆꯥꯠꯂꯒꯦ ꯫', // test for consecutive lonsum
+        'ava ana yaudb oirsnu': 'ꯑꯚꯥ ꯑꯅꯥ ꯌꯥꯎꯗꯕ ꯑꯣꯏꯔꯁꯅꯨ', // test for v
+        'zebra se kri kouge': 'ꯖꯦꯕ꯭ꯔꯥ ꯁꯦ ꯀꯔꯤ ꯀꯧꯒꯦ', // test for z and apun mayek
+        'kagz haibdi che ni': 'ꯀꯥꯒꯖ ꯍꯥꯏꯕꯗꯤ ꯆꯦ ꯅꯤ', // test for z
+        'sandhya': 'ꯁꯥꯟꯙ꯭ꯌꯥ', // test for apun mayek
+        'khwairambnd': 'ꯈ꯭ꯋꯥꯏꯔꯥꯝꯕꯟꯗ', // test for apun mayek
+        'maangkhre': 'ꯃꯥꯡꯈ꯭ꯔꯦ', // test for apun mayek
+        'kwakeithel': 'ꯀ꯭ꯋꯥꯀꯩꯊꯦꯜ'
+    };
+    let passedCount = 0;
+    let failedCount = 0;
+    for (const [input, expectedOutput] of Object.entries(tests)) {
+        const output = engine.transliterate(input);
+        const pass = output === expectedOutput;
+        if (pass) {
+            passedCount++;
+        } else {
+            failedCount++;
+        }
+        console.log(input + ': ' + output + ' => ' + (pass ? 'PASSED' : 'FAILED'));
+    }
+    console.log('\n');
+    console.log(' ----------- Tests results [ ' + (failedCount > 0 ? 'FAILURE' : 'SUCCESS') + ' ] ----------- ')
+    console.log('    Total: ' + (passedCount + failedCount) + ', Passed: ' + passedCount + ', Failed: ' + failedCount);
+    console.log(' ------------------------------------------------ ')
+    console.log('\n');
+
+}
+
+/** UNCOMMENT below to run the test locally using node js */
+/** Install node js, and run `node meitei_mayek_transliteration.js` */
+
+test();
+

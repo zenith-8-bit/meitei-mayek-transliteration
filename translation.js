@@ -909,6 +909,7 @@
                 }
             }
         }
+        #MARVEL - TARGET 0
         async function V(e, t) {
             if ("function" == typeof Response && e instanceof Response) {
                 if ("function" == typeof WebAssembly.instantiateStreaming)
