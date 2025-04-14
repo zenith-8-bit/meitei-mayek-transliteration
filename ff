@@ -1,0 +1,103 @@
+Request URL:
+https://www.meiteimayek.com/_next/static/media/index_bg.3f1d7164.wasm
+Request Method:
+GET
+Status Code:
+200 OK
+Remote Address:
+66.33.60.129:443
+Referrer Policy:
+strict-origin-when-cross-origin
+accept-ranges:
+bytes
+access-control-allow-origin:
+*
+age:
+1039162
+cache-control:
+public,max-age=31536000,immutable
+content-disposition:
+inline; filename="index_bg.3f1d7164.wasm"
+content-encoding:
+br
+content-length:
+208126
+content-type:
+application/wasm
+date:
+Mon, 14 Apr 2025 07:33:28 GMT
+etag:
+"e3351c855d416a7d52d44e70334e0a6c"
+last-modified:
+Wed, 02 Apr 2025 06:54:05 GMT
+server:
+Vercel
+strict-transport-security:
+max-age=63072000
+x-matched-path:
+/_next/static/media/index_bg.3f1d7164.wasm
+x-vercel-cache:
+HIT
+x-vercel-id:
+bom1::x887v-1744616008393-b51f596106c8
+referer:
+https://www.meiteimayek.com/_next/static/chunks/335.8e0230b261391b7c.js
+user-agent:
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+------------------------
+Request URL:
+https://www.meiteimayek.com/_next/static/media/transliteration.model.e9477d49.bin
+Request Method:
+GET
+Status Code:
+200 OK
+Remote Address:
+66.33.60.129:443
+Referrer Policy:
+strict-origin-when-cross-origin
+accept-ranges:
+bytes
+access-control-allow-origin:
+*
+age:
+1039160
+cache-control:
+public,max-age=31536000,immutable
+content-disposition:
+inline; filename="transliteration.model.e9477d49.bin"
+content-length:
+8030899
+content-type:
+application/octet-stream
+date:
+Mon, 14 Apr 2025 07:33:28 GMT
+etag:
+"c3699cf80fdc6a9db854f25fbc65dfda"
+last-modified:
+Wed, 02 Apr 2025 06:54:07 GMT
+server:
+Vercel
+strict-transport-security:
+max-age=63072000
+x-matched-path:
+/_next/static/media/transliteration.model.e9477d49.bin
+x-vercel-cache:
+HIT
+x-vercel-id:
+bom1::n7gk7-1744616008655-47ca980ab7ab
+referer:
+https://www.meiteimayek.com/_next/static/chunks/335.8e0230b261391b7c.js
+user-agent:
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+-----------------------
+retry_count: 1
+ip: 1
+_: 1744616029585
+ver: 1.194.6
+compression: gzip-js
+T]oÔ8ý+QÈÏÉ Õ-«-ÝÕÂ x±ä&q'±ã4´ÀçÞtJ§1óùÜïãsýÉ&Uù[ñ<¢(òGA¥U Ë¤
+Ò¨
+yyIî?õá
+´C÷GlàJÁØ`ÍÖ)ýí'ÿÁ¿Wº2óV<+°£2qÎ*,ÚÀâù¬µ¦Â*LWp× þÆ3êáÆhBJ®ÏdWNÎI²µØlæÖ¹aÜ®×ó<¯zPT/¯á°*M¿vVê±CÌJtR7¿þ­é&c®Ö4ÙwÉ:H×j­ný¹Èhå,&H )=æFu\'+æ=>ráý»ó8[±giüÌûÆO¼çÃÐÁsåÖI­¢Ô{|þrwñú©×©xCy0O¼[Ö<Âô÷ÞÊZZu9áôkô=iâ	ÛÃæ@ïÞÜÙÄ`¡V²¥Ð¢Õ´8UnîÁYU®¥"i )a0Ö}óMÿ½³#Ú©xjàáT+Ç«e¥±5'qöó%cuÝläeSÝÉëgqò1
+±½JNéò·<Ès.,É àUdEÈsà2ØÒÒÊ)Ù	ñh´Pº6$eè©¦c9aÔôÅù_H F×ªAUb¦Ô¸èqOøÑï^þ¿ÔöÒ­Ý¨e=nû[	5àfüx£Ò¨L/]ÀC/trÊaÊ­¿;Õ¼÷Ù»X¦õ.h\r3ÔÌÖÚRÒ½+MÝ
+Íû×Í^þu¦ì^üÿÏ.aoô«?_í/ëSßNqËËÃgh³	!È e8:>H¬#¼ç²2¦ yÙ©ÆÄ	ÒÑBÒØÆ®==SÅT#-*1î¯ª`ÞZv#Ðæ[SbwâÀc­;;)HêJª²pUò@·eû«,L<Þ±lEÛÔ½÷¿|ÂqÍu
